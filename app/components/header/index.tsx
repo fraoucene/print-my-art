@@ -1,11 +1,14 @@
-"use client";
-
 import { Moon, ShoppingCart, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
 import Container from "../ui/container";
+import Link from "next/link";
 
 const routes = [
+  {
+    title: "Admin",
+    url: "/admin",
+  },
   {
     title: "Services",
     url: "/services",
@@ -26,11 +29,11 @@ const Header = () => {
       <Container>
         <div className="items-center gap-4 flex justify-between w-full">
           <h1 className="text-xl font-bold">Print my Art</h1>
-          <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
+          <nav className="mx-6 md:flex  items-center space-x-4 lg:space-x-6 hidden">
             {routes.map((page) => (
-              <Button variant={"ghost"} key={page.title}>
-                {page.title}
-              </Button>
+              <Link href={page.url} key={page.title}>
+                <Button variant={"ghost"}>{page.title}</Button>
+              </Link>
             ))}
           </nav>
           <div className="flex items-center">
